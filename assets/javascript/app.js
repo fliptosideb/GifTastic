@@ -33,18 +33,15 @@ document.addEventListener('click', ({ target }) => {
                 for (let i = 0; i < 10; i++) {
                 let still = r.data[i].images.fixed_height_still.url
                 let animated = r.data[i].images.fixed_height.url
-                let rate = `Rating: ${r.data[i].rating}`
+                let rate = r.data[i].rating
                 let boxElem = document.createElement("div")
+                boxElem.style.display = 'inline-block'
                 boxElem.setAttribute('id', 'rating')
+                boxElem.innerHTML = `
+                <p>Rating: ${rate}</p>
+                <img id="gif" src="${still}" data-still="${still}" data-animated="${animated}">
+                `
                 document.querySelector('#gifDiv').append(boxElem)
-                let gifElem = document.createElement('img')
-                gifElem.setAttribute('id', 'gif')
-                gifElem.setAttribute('src', `${still}`)
-                gifElem.setAttribute('data-still', `${still}`)
-                gifElem.setAttribute('data-animated', `${animated}`)
-                document.createElement("br")
-                document.querySelector('#gifDiv').append(gifElem)
-                document.querySelector('#gifDiv').append(rate)
         }   
         })
     
